@@ -2,28 +2,123 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <!-- build:css(.tmp) styles/bootstrap.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css(.tmp) styles/3DCircleRound.css -->
   <link rel="stylesheet" type="text/css" href="styles/3DCircleRound.css" />
+  <!-- endbuild -->
+
+  <style type="text/css">
+    .navbar {
+      margin-bottom: 0;
+    }
+    .masthead {
+      color: #cdbfe3;
+      background-color: #6f5499;
+      background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+      background-repeat: repeat-x;
+    }
+    .masthead h1 {
+      color: #fff;
+    }
+    .container-my {
+      background: #fff;
+    }
+    .container-my .row {
+      margin-top: 20px;
+    }
+  </style>
+
+  <!-- build:js scripts/vendor/modernizr.js -->
+  <script src="bower_components/modernizr/modernizr.js"></script>
+  <!-- endbuild -->
 </head>
 <body>
-    <img class="roundCircle normal" src="images/RGBCircle.png">
-    <img class="roundCircle rotateY" src="images/RGBCircle.png">
-    <img class="roundCircle rotateXY" src="images/RGBCircle.png">
-    <div class="overlap">
-        <div class="roundText rotateY">
+  <header class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="##" class="navbar-brand">Css Animation Laboratory</a>
+      </div>
+      <div class="collapse navbar-collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Index</a></li>
+          <li class="active"><a href="##">3D Circle Round</a></li>
+          <li><a href="##">Blank</a></li>
+          <li><a href="##">Blank</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="jumbotron masthead">
+    <div class="container">
+      <h1>旋转演示-圆环</h1>
+      <p>通过改变CSS来使圆环以不同的方式旋转</p>
+    </div>
+  </div>
+
+  <div class="container container-my">
+    <div class="row">
+      <div class="col-md-3">
+        <img class="roundCircle normal" src="images/RGBCircle.png">
+      </div>
+      <div class="col-md-9">
+        <h2>旋转的圆环（正常）</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <img class="roundCircle rotateY" src="images/RGBCircle.png">
+      </div>
+      <div class="col-md-9">
+        <h2>旋转的圆环（左偏）</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <img class="roundCircle rotateXY" src="images/RGBCircle.png">
+      </div>
+      <div class="col-md-9">
+        <h2>旋转的圆环（倾斜）</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="overlap">
+          <div class="roundText rotateY">
             <span>TextArea</span>
             <span class="backText">Another</span>
+          </div>
+          <img class="roundCircle rotateXY" src="images/RGBCircle.png">
+          <img class="roundCircle rotateYX" src="images/RGBCircle.png">
         </div>
-        <img class="roundCircle rotateXY" src="images/RGBCircle.png">
-        <img class="roundCircle rotateYX" src="images/RGBCircle.png">
+      </div>
+      <div class="col-md-9">
+        <h2>双圆环&文字横幅</h2>
+      </div>
     </div>
+  </div>
 
     <button onclick="stopRound()">Pause/Run</button>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
 <script type="text/javascript">
 function stopRound () {
     if($(".animationPaused").length) {
@@ -32,10 +127,6 @@ function stopRound () {
     else {
         $(".roundCircle, .roundText").removeClass("animationRunning").addClass("animationPaused");
     }
-    // $("img").each(function () {
-    //     var that = $(this);
-    //     (that.hasClass("animationPaused"))? (that.removeClass("animationPaused").addClass("animationRunning")) : (that.removeClass("animationRunning").addClass("animationPaused"));
-    // })
 }
 </script>
 </body>

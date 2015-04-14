@@ -224,7 +224,8 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= config.dist %>'
       },
-      html: '<%= config.app %>/index.html'
+      html: '<%= config.app %>/index.html',
+      '3DCircle' : '<%= config.app %>/3DCircleRound.html'
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -334,7 +335,12 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
           dest: '<%= config.dist %>'
-        }]
+        }/*, {
+          expand: true,
+          cwd: '<%= config.app %>/styles',
+          src: '*.css',
+          dest: '<%= config.dist %>/styles'
+        }*/]
       },
       styles: {
         expand: true,
