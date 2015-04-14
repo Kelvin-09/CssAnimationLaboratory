@@ -1,242 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<style type="text/css">
-*{
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    moz-user-select: -moz-none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.overlap {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    
-    -webkit-perspective: 200px;
-    perspective: 200px;
-}
-
-.overlap img {
-    position: absolute;
-}
-
-.overlap .roundText {
-    /*top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;*/
-    top: 50%;
-    left: 50%;
-    margin-top: -60px;
-    margin-left: -60px;
-    position: absolute;
-    z-index: 101;
-}
-
-.roundCircle {
-    width: 200px;
-    height: 200px;
-    position: relative;
-}
-
-.animationRunning {
-    -webkit-animation-play-state:running;
-    animation-play-state:running;
-}
-
-.animationPaused {
-    -webkit-animation-play-state:paused;
-    animation-play-state:paused;
-}
-
-@-webkit-keyframes roundNormal {
-    0%   { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes roundNormal {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.roundCircle.normal {
-    -webkit-animation-name: "roundNormal";
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-
-    animation-name: "roundNormal"; 
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes roundrotateY {
-    0%   { -webkit-transform: rotateY(45deg) rotateZ(0deg); }
-    100% { -webkit-transform: rotateY(45deg) rotateZ(360deg); }
-}
-
-@keyframes roundrotateY {
-    0%   { transform: rotateY(45deg) rotateZ(0deg); }
-    100% { transform: rotateY(45deg) rotateZ(360deg); }
-}
-
-.roundCircle.rotateY {
-    transform: rotateY(45deg);
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-
-    -webkit-animation-name: "roundrotateY";
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-
-    animation-name: "roundrotateY";
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes roundrotateXY {
-    0%   { -webkit-transform: rotateX(75deg) rotateY(-15deg) rotateZ(0deg); }
-    100% { -webkit-transform: rotateX(75deg) rotateY(-15deg) rotateZ(360deg); }
-}
-
-@keyframes roundrotateXY {
-    0%   { transform: rotateX(75deg) rotateY(-15deg) rotateZ(0deg); }
-    100% { transform: rotateX(75deg) rotateY(-15deg) rotateZ(360deg); }
-}
-
-.roundCircle.rotateXY {
-    transform: rotateX(75deg) rotateY(-15deg);
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-
-    -webkit-animation-name: "roundrotateXY";
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-
-    animation-name: "roundrotateXY";
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes roundrotateYX {
-    0%   { -webkit-transform: rotateX(75deg) rotateY(15deg) rotateZ(0deg); }
-    100% { -webkit-transform: rotateX(75deg) rotateY(15deg) rotateZ(360deg); }
-}
-
-@keyframes roundrotateYX {
-    0%   { transform: rotateX(75deg) rotateY(15deg) rotateZ(0deg); }
-    100% { transform: rotateX(75deg) rotateY(15deg) rotateZ(360deg); }
-}
-
-.roundCircle.rotateYX {
-    transform: rotateX(75deg) rotateY(15deg);
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-
-    -webkit-animation-name: "roundrotateYX";
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-
-    animation-name: "roundrotateYX";
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-.roundText {
-    width: 120px;
-    height: 40px;
-
-    color: #fff;
-    font-size: 28px;
-    font-family: "Microsoft Yahei";
-    text-align: center;
-    line-height: 40px;
-    text-transform: uppercase;
-}
-
-@-webkit-keyframes textroundrotateY {
-    0%   { -webkit-transform: rotate3d(0,1,0,0deg); }
-    100% { -webkit-transform: rotate3d(0,1,0,360deg); }
-}
-
-@keyframes textroundrotateY {
-    0%   { transform: rotate3d(0,1,0,0deg); }
-    100% { transform: rotate3d(0,1,0,360deg); }
-}
-
-.roundText.rotateY {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-
-    -webkit-animation-name: "textroundrotateY";
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-
-    animation-name: "textroundrotateY";
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-.roundText span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -60px;
-
-    background: linear-gradient(90deg, #00f 0%, #0f0 20%, #0ff 40%, #f00 60%, #f0f 80%, #ff0 100%);
-}
-
-.roundText .backText {
-    -webkit-transform: rotateY(180deg) translateZ(1px);
-    transform: rotateY(180deg) translateZ(1px);
-}
-</style>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="styles/3DCircleRound.css" />
 </head>
 <body>
-    <img class="roundCircle normal" src="RGBCircle.png">
-    <img class="roundCircle rotateY" src="RGBCircle.png">
-    <img class="roundCircle rotateXY" src="RGBCircle.png">
+    <img class="roundCircle normal" src="images/RGBCircle.png">
+    <img class="roundCircle rotateY" src="images/RGBCircle.png">
+    <img class="roundCircle rotateXY" src="images/RGBCircle.png">
     <div class="overlap">
         <div class="roundText rotateY">
             <span>TextArea</span>
             <span class="backText">Another</span>
         </div>
-        <img class="roundCircle rotateXY" src="RGBCircle.png">
-        <img class="roundCircle rotateYX" src="RGBCircle.png">
+        <img class="roundCircle rotateXY" src="images/RGBCircle.png">
+        <img class="roundCircle rotateYX" src="images/RGBCircle.png">
     </div>
 
     <button onclick="stopRound()">Pause/Run</button>
 
-<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 <script type="text/javascript">
 function stopRound () {
     if($(".animationPaused").length) {
-        $("img").removeClass("animationPaused").addClass("animationRunning");
-        $("div").removeClass("animationPaused").addClass("animationRunning");
+        $(".roundCircle, .roundText").removeClass("animationPaused").addClass("animationRunning");
     }
     else {
-        $("img").removeClass("animationRunning").addClass("animationPaused");
-        $("div").removeClass("animationRunning").addClass("animationPaused");
+        $(".roundCircle, .roundText").removeClass("animationRunning").addClass("animationPaused");
     }
     // $("img").each(function () {
     //     var that = $(this);
